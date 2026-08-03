@@ -1,20 +1,35 @@
-"use client";
+'use client';
 
-import { Canvas } from "@react-three/fiber";
+import { Canvas } from '@react-three/fiber';
+import { Suspense } from 'react';
+import type { ReactElement } from 'react';
+import SceneManager from '@/canvas/SceneManager';
 
-export default function EngineCanvas() {
+export default function EngineCanvas(): ReactElement {
   return (
     <Canvas
-      shadows
+      className="h-full w-full"
       dpr={[1, 2]}
+      gl={{
+        antialias: true,
+        alpha: false,
+        stencil: false,
+        depth: true,
+        powerPreference: 'high-performance',
+        preserveDrawingBuffer: false,
+      }}
       camera={{
-        position: [0, 0, 6],
         fov: 45,
         near: 0.1,
-        far: 100,
+        far: 1000,
+        position: [0, 0, 5],
       }}
+      shadows
+      frameloop="always"
     >
-      <color attach="background" args={["#000000"]} />
+      <Suspense fallback={null}>
+        <SceneManager />
+      </Suspense>
     </Canvas>
   );
 }
