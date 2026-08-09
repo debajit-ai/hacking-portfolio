@@ -2,9 +2,19 @@ import { useEffect, useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
+/**
+ * MobiusRing — Precision mathematical orbital system around the AI Core.
+ *
+ * Contains:
+ * - Primary Möbius strip (dark metallic)
+ * - Computational accent ring (emissive blue)
+ * - Secondary tilted orbital ring
+ * - Data path ring (larger, faint)
+ */
 export default function MobiusRing() {
     const groupRef = useRef<THREE.Group | null>(null);
     const meshRef = useRef<THREE.Mesh | null>(null);
+    const secondaryRingRef = useRef<THREE.Mesh | null>(null);
 
     const geometry = useMemo(() => {
         const geo = new THREE.BufferGeometry();
@@ -13,9 +23,9 @@ export default function MobiusRing() {
         const normals: number[] = [];
         const indices: number[] = [];
 
-        const radius = 1.4;
-        const halfWidth = 0.04;
-        const halfThickness = 0.004;
+        const radius = 1.2;
+        const halfWidth = 0.035;
+        const halfThickness = 0.003;
         const segmentsU = 360;
 
         for (let i = 0; i <= segmentsU; i++) {
@@ -74,22 +84,14 @@ export default function MobiusRing() {
 
             positions.push(...c1, ...c2);
             normals.push(
-                -xDir[0],
-                -xDir[1],
-                -xDir[2],
-                -xDir[0],
-                -xDir[1],
-                -xDir[2]
+                -xDir[0], -xDir[1], -xDir[2],
+                -xDir[0], -xDir[1], -xDir[2]
             );
 
             positions.push(...c2, ...c3);
             normals.push(
-                -yDir[0],
-                -yDir[1],
-                -yDir[2],
-                -yDir[0],
-                -yDir[1],
-                -yDir[2]
+                -yDir[0], -yDir[1], -yDir[2],
+                -yDir[0], -yDir[1], -yDir[2]
             );
 
             positions.push(...c3, ...c0);
@@ -111,16 +113,8 @@ export default function MobiusRing() {
             }
         }
 
-        geo.setAttribute(
-            'position',
-            new THREE.Float32BufferAttribute(positions, 3)
-        );
-
-        geo.setAttribute(
-            'normal',
-            new THREE.Float32BufferAttribute(normals, 3)
-        );
-
+        geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+        geo.setAttribute('normal', new THREE.Float32BufferAttribute(normals, 3));
         geo.setIndex(indices);
 
         return geo;
@@ -134,33 +128,74 @@ export default function MobiusRing() {
 
     useFrame((state) => {
         if (!groupRef.current || !meshRef.current) return;
-
         const time = state.clock.getElapsedTime();
 
-        meshRef.current.rotation.z = time * -0.015;
+        // Primary Möbius — very slow roll
+        meshRef.current.rotation.z = time * -0.04;
 
+        // Group tilt oscillation
         groupRef.current.rotation.x =
-            THREE.MathUtils.degToRad(20) +
-            Math.sin(time * 0.1) * 0.015;
-
+            THREE.MathUtils.degToRad(25) +
+            Math.sin(time * 0.15) * 0.04;
         groupRef.current.rotation.y =
-            Math.cos(time * 0.08) * 0.015;
+            time * 0.02 + Math.cos(time * 0.12) * 0.02;
+
+        // Secondary ring — counter-rotation
+        if (secondaryRingRef.current) {
+            secondaryRingRef.current.rotation.z = time * 0.03;
+            secondaryRingRef.current.rotation.x = Math.sin(time * 0.1) * 0.1;
+        }
     });
 
     return (
         <group ref={groupRef}>
-            <mesh
-                ref={meshRef}
-                geometry={geometry}
-            >
+            {/* ORBIT C: Subtle Möbius / twisted orbital structure */}
+            <mesh ref={meshRef} geometry={geometry}>
                 <meshPhysicalMaterial
-                    color="#2a2d32"
-                    metalness={1}
+                    color="#0f172a"
+                    metalness={0.9}
+                    roughness={0.08}
+                    clearcoat={1.0}
+                    clearcoatRoughness={0.02}
+                    ior={1.6}
+                    reflectivity={0.9}
+                    transmission={0.2}
+                    thickness={0.1}
+                />
+            </mesh>
+
+            {/* ORBIT A: Thin metallic precision ring */}
+            <mesh rotation={[Math.PI / 3, 0, 0]}>
+                <torusGeometry args={[1.45, 0.002, 16, 128]} />
+                <meshPhysicalMaterial
+                    color="#94a3b8"
+                    metalness={1.0}
                     roughness={0.15}
-                    clearcoat={1}
-                    clearcoatRoughness={0.1}
-                    ior={1.5}
-                    envMapIntensity={1.2}
+                    clearcoat={0.5}
+                    emissive="#38bdf8"
+                    emissiveIntensity={0.05}
+                />
+            </mesh>
+
+            {/* ORBIT B: Asymmetric elliptical computational path */}
+            <mesh ref={secondaryRingRef} rotation={[-0.5, 0.8, 0.3]} scale={[1, 1.2, 1]}>
+                <torusGeometry args={[1.6, 0.0015, 12, 128]} />
+                <meshPhysicalMaterial
+                    color="#64748b"
+                    metalness={1.0}
+                    roughness={0.2}
+                    emissive="#94a3b8"
+                    emissiveIntensity={0.02}
+                />
+            </mesh>
+
+            {/* ORBIT D: Very faint large gravitational field ring */}
+            <mesh rotation={[0.2, -0.4, 0.1]}>
+                <torusGeometry args={[2.2, 0.001, 8, 256]} />
+                <meshBasicMaterial
+                    color="#475569"
+                    transparent
+                    opacity={0.05}
                 />
             </mesh>
         </group>
