@@ -13,9 +13,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Debajit Goswami — Founder & CEO | Singularity Horizon Technologies",
-  description: "Official portfolio of Debajit Goswami, Founder & CEO of Singularity Horizon Technologies. Engineering OrionHelix AI — the Multiverse of Artificial Intelligence.",
+  title: "Debajit Goswami — Founder & CEO | SingularityHorizon Technologies Pvt. Ltd.",
+  description: "Official portfolio of Debajit Goswami, Founder & CEO of SingularityHorizon Technologies Pvt. Ltd. Engineering OrionHelix AI — the Multiverse of Artificial Intelligence.",
 };
+
+import OrionHelixAssistant from "@/components/ai/OrionHelixAssistant";
 
 export default function RootLayout({
   children,
@@ -25,9 +27,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+          {children}
+          <OrionHelixAssistant />
+      </body>
     </html>
   );
 }

@@ -15,7 +15,7 @@ interface Milestone {
 const MILESTONES: readonly Milestone[] = [
     {
         year: "2024 - PRESENT",
-        title: "Singularity Horizon Technologies",
+        title: "SingularityHorizon Technologies Pvt. Ltd.",
         description: "Founded the flagship enterprise to engineer the next generation of multimodal reasoning architectures and continuous intelligence substrates."
     },
     {

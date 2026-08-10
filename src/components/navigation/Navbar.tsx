@@ -34,7 +34,7 @@ export default function Navbar(): ReactElement {
                         className="h-2 w-2 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]"
                     />
                     <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-200 sm:text-xs">
-                        Singularity Horizon
+                        SingularityHorizon
                     </span>
                 </Link>
 

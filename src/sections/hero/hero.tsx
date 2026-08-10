@@ -36,32 +36,27 @@ function useTerminalTyping(words: readonly string[]): string {
     const [isDeleting, setIsDeleting] = useState(false);
 
     useEffect(() => {
+        let timer: NodeJS.Timeout;
         const currentWord = words[wordIndex];
 
-        if (!isDeleting && displayText === currentWord) {
-            const timer = setTimeout(() => {
-                setIsDeleting(true);
-            }, HOLD_TIME);
-
-            return () => clearTimeout(timer);
-        }
-
-        if (isDeleting && displayText === '') {
-            const timer = setTimeout(() => {
+        if (isDeleting) {
+            if (displayText === '') {
                 setIsDeleting(false);
                 setWordIndex((prev) => (prev + 1) % words.length);
-            }, PAUSE_TIME);
-
-            return () => clearTimeout(timer);
+            } else {
+                timer = setTimeout(() => {
+                    setDisplayText(currentWord.slice(0, displayText.length - 1));
+                }, DELETING_SPEED);
+            }
+        } else {
+            if (displayText === currentWord) {
+                timer = setTimeout(() => setIsDeleting(true), HOLD_TIME);
+            } else {
+                timer = setTimeout(() => {
+                    setDisplayText(currentWord.slice(0, displayText.length + 1));
+                }, TYPING_SPEED);
+            }
         }
-
-        const timer = setTimeout(() => {
-            setDisplayText((prev) =>
-                isDeleting
-                    ? currentWord.slice(0, prev.length - 1)
-                    : currentWord.slice(0, prev.length + 1)
-            );
-        }, isDeleting ? DELETING_SPEED : TYPING_SPEED);
 
         return () => clearTimeout(timer);
     }, [displayText, isDeleting, wordIndex, words]);
@@ -99,7 +94,7 @@ export default function Hero(): ReactElement {
                     >
                         <span>Founder &amp; CEO</span>
                         <span className="h-1 w-1 rounded-full bg-slate-600" />
-                        <span className="text-slate-300">Singularity Horizon Technologies</span>
+                        <span className="text-slate-300">SingularityHorizon Technologies Pvt. Ltd.</span>
                     </motion.div>
 
                     {/* Name Title — single-line on desktop */}
@@ -124,7 +119,7 @@ export default function Hero(): ReactElement {
                         variants={fadeUp}
                         className="mt-8 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg md:text-xl font-light"
                     >
-                        Building <span className="font-medium text-white">ORIONHELIX AI</span> — the Multiverse of Artificial Intelligence at <span className="text-slate-200">Singularity Horizon Technologies Pvt. Ltd.</span>
+                        Building <span className="font-medium text-white">ORIONHELIX AI</span> — the Multiverse of Artificial Intelligence at <span className="text-slate-200">SingularityHorizon Technologies Pvt. Ltd.</span>
                     </motion.p>
 
                     {/* Terminal Prompt */}

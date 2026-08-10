@@ -78,7 +78,7 @@ export default function Vision(): ReactElement {
                         variants={fadeUpVariants}
                         className="mt-10 max-w-3xl text-base leading-relaxed text-slate-300 sm:text-lg md:text-xl font-light"
                     >
-                        Singularity Horizon Technologies exists to architect intelligent systems that collaborate, evolve, and reason beyond the static boundaries of legacy machine learning. OrionHelix AI represents the foundational core of this continuous paradigm shift.
+                        SingularityHorizon Technologies Pvt. Ltd. exists to architect intelligent systems that collaborate, evolve, and reason beyond the static boundaries of legacy machine learning. OrionHelix AI represents the foundational core of this continuous paradigm shift.
                     </motion.p>
 
                     {/* Pillar Badges */}
@@ -96,7 +96,7 @@ export default function Vision(): ReactElement {
                         </div>
                         <div>
                             <span className="text-xs font-mono uppercase tracking-widest text-slate-400">CORPORATE HORIZON</span>
-                            <p className="mt-2 text-sm font-medium text-slate-200">Singularity Horizon Technologies</p>
+                            <p className="mt-2 text-sm font-medium text-slate-200">SingularityHorizon Technologies Pvt. Ltd.</p>
                         </div>
                     </motion.div>
                 </motion.div>
