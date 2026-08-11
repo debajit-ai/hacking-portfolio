@@ -14,34 +14,28 @@ interface OrionCapability {
 
 const CAPABILITIES: readonly OrionCapability[] = [
     {
-        code: "01 / ADAPT",
-        title: "Adaptive Intelligence",
+        code: "01 / PERCEPTION",
+        title: "Perception Layer",
         description:
-            "Continuously calibrates computational depth and reasoning paths in real time based on task context and complexity.",
+            "Synthesizing text, code, and geometry natively across high-dimensional domain boundaries.",
     },
     {
-        code: "02 / SYNTHESIS",
-        title: "Multimodal Reasoning",
+        code: "02 / MEMORY",
+        title: "Continuous Memory",
         description:
-            "Processes structured data, code, perception streams, and symbolic logic within a single unified latent spectrum.",
+            "Maintaining deep context architectures across isolated sessions for persistent memory synthesis.",
     },
     {
-        code: "03 / AGENTIC",
-        title: "Autonomous Systems",
+        code: "03 / EXECUTION",
+        title: "Agentic Execution",
         description:
-            "Orchestrates dynamic sub-agents with self-evaluating safety loops and multi-step executive decision pipelines.",
+            "Translating abstract reasoning into actionable system commands with dynamic governance.",
     },
     {
-        code: "04 / CONTINUUM",
-        title: "Continuous Context",
+        code: "04 / ORCHESTRATION",
+        title: "Dynamic Orchestration",
         description:
-            "Eliminates static context windows through persistent memory synthesis and real-time state synchronization.",
-    },
-    {
-        code: "05 / SCALE",
-        title: "Enterprise Intelligence",
-        description:
-            "Engineered for high-volume enterprise deployment with deterministic governance and distributed cluster acceleration.",
+            "Spawning and managing specialized sub-agents dynamically for enterprise-grade deployment.",
     },
 ] as const;
 
@@ -123,7 +117,7 @@ export default function OrionShowcase(): ReactElement {
                     <motion.div variants={fadeUpVariants} className="flex items-center gap-3">
                         <span className="h-px w-8 bg-slate-600" />
                         <span className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-400">
-                            02 / Flagship Technology Platform
+                            03 / Flagship AI Platform
                         </span>
                     </motion.div>
 
@@ -139,7 +133,7 @@ export default function OrionShowcase(): ReactElement {
                         variants={fadeUpVariants}
                         className="mt-6 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg font-light"
                     >
-                        OrionHelix AI is an operating substrate for artificial intelligence — a system engineered to reason with the unified coherence of a single mind across high-dimensional domain boundaries.
+                        OrionHelix AI is an experimental intelligence architecture under development — a system engineered to reason across high-dimensional domain boundaries and orchestrate dynamic sub-agents for specialized execution.
                     </motion.p>
 
                     <motion.div

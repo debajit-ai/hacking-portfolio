@@ -111,7 +111,7 @@ export default function Projects(): ReactElement {
                     <motion.div variants={labelVariants} className="flex items-center gap-3">
                         <span className="h-px w-8 bg-slate-600" />
                         <span className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-400">
-                            04 / Advanced Initiatives
+                            06 / Active Initiatives
                         </span>
                     </motion.div>
 

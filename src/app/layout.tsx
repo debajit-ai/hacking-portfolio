@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Debajit Goswami — Founder & CEO | SingularityHorizon Technologies Pvt. Ltd.",
-  description: "Official portfolio of Debajit Goswami, Founder & CEO of SingularityHorizon Technologies Pvt. Ltd. Engineering OrionHelix AI — the Multiverse of Artificial Intelligence.",
+  title: "Debajit Goswami — Founder & CEO | Singularity Horizon Technologies Pvt. Ltd.",
+  description: "Official portfolio of Debajit Goswami, Founder & CEO of Singularity Horizon Technologies Pvt. Ltd. Engineering OrionHelix AI — the Multiverse of Artificial Intelligence.",
 };
 
 import OrionHelixAssistant from "@/components/ai/OrionHelixAssistant";

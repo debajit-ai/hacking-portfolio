@@ -17,7 +17,13 @@ export default function Roadmap(): ReactElement {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.8 }}
+                        className="flex flex-col items-center"
                     >
+                        <div className="mb-6 flex items-center justify-center space-x-4">
+                            <div className="h-[1px] w-8 bg-cyan-900/50" />
+                            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-cyan-500">Evolution Path</span>
+                            <div className="h-[1px] w-8 bg-cyan-900/50" />
+                        </div>
                         <h2 className="text-3xl font-light tracking-tight text-white sm:text-4xl">
                             Strategic Roadmap
                         </h2>

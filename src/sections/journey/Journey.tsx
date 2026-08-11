@@ -15,7 +15,7 @@ interface Milestone {
 const MILESTONES: readonly Milestone[] = [
     {
         year: "2024 - PRESENT",
-        title: "SingularityHorizon Technologies Pvt. Ltd.",
+        title: "Singularity Horizon Technologies Pvt. Ltd.",
         description: "Founded the flagship enterprise to engineer the next generation of multimodal reasoning architectures and continuous intelligence substrates."
     },
     {
@@ -82,7 +82,7 @@ export default function Journey(): ReactElement {
                     <motion.div variants={fadeUpVariants} className="flex items-center gap-3">
                         <span className="h-px w-8 bg-slate-600" />
                         <span className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-400">
-                            05 / Organizational Trajectory
+                            08 / Organizational Trajectory
                         </span>
                     </motion.div>
 

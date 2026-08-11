@@ -1,22 +1,22 @@
 export const companyKnowledge = {
     company: {
-        name: "SingularityHorizon Technologies Pvt. Ltd.",
+        name: "Singularity Horizon Technologies Pvt. Ltd.",
         founder: "Debajit Goswami",
         role: "Founder & CEO",
         description: "An advanced technology company engineering the next generation of multimodal reasoning architectures and continuous intelligence substrates.",
-        manifesto: "SingularityHorizon Technologies Pvt. Ltd. exists to architect intelligent systems that collaborate, evolve, and reason beyond the static boundaries of legacy machine learning. We believe the future of computation is defined by continuous context and agentic orchestration.",
+        manifesto: "Singularity Horizon Technologies Pvt. Ltd. exists to architect intelligent systems that collaborate, evolve, and reason beyond the static boundaries of legacy machine learning. We are engineering the infrastructure for continuous context, agentic orchestration, and high-dimensional perception. The future of computation demands more than prompt-response mechanics; it requires an integrated intelligence architecture.",
         principles: [
             {
                 title: "Intelligence Continuity",
-                description: "AI should not be stateless. Systems must maintain continuous context across high-dimensional domain boundaries."
+                description: "AI must not be stateless. Systems require continuous context across high-dimensional domain boundaries to reason effectively."
             },
             {
-                title: "Multimodal Reasoning",
-                description: "True intelligence operates across text, vision, architecture, and mathematics simultaneously."
+                title: "Multimodal Perception",
+                description: "True computational intelligence processes code, geometry, language, and vision simultaneously as a unified sensory input."
             },
             {
-                title: "Agentic Autonomy",
-                description: "Moving from reactive models to proactive, self-orchestrating intelligent agents."
+                title: "Agentic Orchestration",
+                description: "Transitioning from reactive predictive models to proactive, self-orchestrating systems that can execute complex, multi-step actions."
             }
         ],
         contact: {
@@ -28,15 +28,15 @@ export const companyKnowledge = {
     },
     aiPlatform: {
         name: "OrionHelix AI",
-        description: "OrionHelix AI is an operating substrate for artificial intelligence — a system engineered to reason with the unified coherence of a single mind across high-dimensional domain boundaries.",
+        description: "OrionHelix AI is an experimental intelligence architecture under development — a system engineered to reason across high-dimensional domain boundaries and orchestrate dynamic sub-agents for specialized execution.",
         capabilities: [
             {
-                title: "Multimodal Perception",
+                title: "Perception Layer",
                 description: "Synthesizing text, code, and geometry natively."
             },
             {
-                title: "Continuous Context",
-                description: "Maintaining deep memory architectures across isolated sessions."
+                title: "Continuous Memory",
+                description: "Maintaining deep context architectures across isolated sessions."
             },
             {
                 title: "Agentic Execution",
@@ -48,40 +48,44 @@ export const companyKnowledge = {
             }
         ],
         architecture: [
-            "INPUT",
             "PERCEPTION",
             "REASONING",
-            "MEMORY / CONTEXT",
-            "AGENTIC ORCHESTRATION",
-            "EXECUTION",
-            "OUTPUT"
+            "MEMORY",
+            "AGENCY",
+            "ORCHESTRATION",
+            "CONTINUOUS CONTEXT",
+            "MULTIMODAL INTELLIGENCE"
         ]
     },
     technology: [
-        "AI / ML",
+        "Advanced Agentic Systems",
+        "Multimodal Reasoning Architectures",
+        "Continuous Context Memory",
         "Generative AI",
-        "Multimodal Systems",
-        "Agentic Systems",
         "Distributed Computing",
-        "WebGL / 3D",
-        "Data Infrastructure",
-        "Enterprise Systems"
+        "WebGL / 3D Interfaces",
+        "Enterprise Data Infrastructure"
     ],
     roadmap: [
         {
-            phase: "NOW",
+            phase: "STAGE I",
             title: "Foundation",
-            description: "Establishing OrionHelix AI Core Architecture and continuous intelligence substrates."
+            description: "Establishing OrionHelix AI Core Architecture, continuous intelligence substrates, and robust data pipelines."
         },
         {
-            phase: "NEXT",
-            title: "Agentic Expansion",
-            description: "Deploying dynamic sub-agent orchestration for enterprise-grade execution."
+            phase: "STAGE II",
+            title: "Core Intelligence",
+            description: "Implementing native multimodal perception and foundational reasoning models."
         },
         {
-            phase: "FUTURE",
-            title: "The Multiverse",
-            description: "A fully autonomous, self-optimizing intelligence ecosystem."
+            phase: "STAGE III",
+            title: "Agentic Systems",
+            description: "Deploying dynamic sub-agent orchestration and proactive multi-step execution."
+        },
+        {
+            phase: "STAGE IV",
+            title: "Enterprise Deployment",
+            description: "Scaling continuous context intelligence for enterprise-grade autonomous environments."
         }
     ]
 };

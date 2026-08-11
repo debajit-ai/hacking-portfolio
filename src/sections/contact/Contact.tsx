@@ -39,7 +39,7 @@ export default function Contact(): ReactElement {
                                 DEBAJIT GOSWAMI
                             </h2>
                             <p className="mt-2 text-sm uppercase tracking-widest text-slate-400 font-mono">
-                                Founder &amp; CEO — SingularityHorizon Technologies Pvt. Ltd.
+                                Founder &amp; CEO — Singularity Horizon Technologies Pvt. Ltd.
                             </p>
                             <p className="mt-6 max-w-md text-sm leading-relaxed text-slate-400 font-light">
                                 Architecting OrionHelix AI and pioneering the multiverse of artificial intelligence.
@@ -128,7 +128,7 @@ export default function Contact(): ReactElement {
 
                 {/* Footer Bottom Bar */}
                 <div className="mt-20 flex flex-col sm:flex-row items-center justify-between border-t border-white/[0.04] pt-8 text-xs text-slate-500 font-mono gap-4">
-                    <p>© {new Date().getFullYear()} SingularityHorizon Technologies Pvt. Ltd. All rights reserved.</p>
+                    <p>© {new Date().getFullYear()} Singularity Horizon Technologies Pvt. Ltd. All rights reserved.</p>
                     <p className="tracking-widest uppercase text-[10px]">OrionHelix AI Framework</p>
                 </div>
             </div>

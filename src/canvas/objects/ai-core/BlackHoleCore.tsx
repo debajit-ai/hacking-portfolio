@@ -239,9 +239,9 @@ export default function BlackHoleCore() {
         <group ref={groupRef}>
             {/* 1. Event Horizon - Pure Black Occlusion Volume */}
             {/* Absolute flat black. No shader, no fresnel, no rim light. Defines the void. */}
-            <mesh scale={[1.0, 1.0, 1.0]}>
+            <mesh scale={[1.15, 1.15, 1.15]}>
                 <sphereGeometry args={[1, 64, 64]} />
-                <meshBasicMaterial color="#000000" depthWrite={true} />
+                <meshBasicMaterial color="#000000" depthWrite={false} />
             </mesh>
 
             {/* 2. Accretion Disk (Procedural Particle Shader) */}

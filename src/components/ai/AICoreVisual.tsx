@@ -41,30 +41,17 @@ export default function AICoreVisual({ isExpanded, isThinking = false }: Props):
                 {/* Main Face Plate */}
                 <div className="relative flex h-5 w-7 flex-col items-center justify-center bg-gradient-to-b from-[#1a1a1a] to-[#0a0a0a] rounded-b-md border-b border-x border-white/10 shadow-inner">
                     
-                    {/* Optical Visor / Eyes */}
-                    <div className="flex w-full items-center justify-center space-x-1 px-1">
-                        {/* Left Eye */}
+                    {/* Sleek Optical Visor */}
+                    <div className="flex w-full items-center justify-center px-1">
                         <motion.div 
-                            className="h-1 w-2 rounded-sm bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,1)]"
+                            className="h-[2px] w-full max-w-[20px] rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.8)]"
                             animate={{
-                                opacity: isThinking ? [1, 0.5, 1] : 1,
-                                scaleY: isThinking ? 1 : [1, 0.1, 1, 1, 1, 1, 1] // Occasional blink
+                                opacity: isThinking ? [1, 0.4, 1] : [0.8, 1, 0.8],
+                                width: isThinking ? ["60%", "100%", "60%"] : "80%"
                             }}
                             transition={{ 
-                                opacity: { duration: 0.5, repeat: Infinity },
-                                scaleY: { duration: 4, repeat: Infinity, ease: "easeInOut", times: [0, 0.05, 0.1, 0.2, 0.5, 0.8, 1] } 
-                            }}
-                        />
-                        {/* Right Eye */}
-                        <motion.div 
-                            className="h-1 w-2 rounded-sm bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,1)]"
-                            animate={{
-                                opacity: isThinking ? [1, 0.5, 1] : 1,
-                                scaleY: isThinking ? 1 : [1, 0.1, 1, 1, 1, 1, 1] // Occasional blink sync
-                            }}
-                            transition={{ 
-                                opacity: { duration: 0.5, repeat: Infinity },
-                                scaleY: { duration: 4, repeat: Infinity, ease: "easeInOut", times: [0, 0.05, 0.1, 0.2, 0.5, 0.8, 1] } 
+                                opacity: { duration: isThinking ? 0.8 : 3, repeat: Infinity, ease: "easeInOut" },
+                                width: { duration: 1.5, repeat: Infinity, ease: "easeInOut" } 
                             }}
                         />
                     </div>

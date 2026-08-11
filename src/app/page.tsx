@@ -6,7 +6,6 @@ import Navbar from '@/components/navigation/Navbar';
 
 import Hero from '@/sections/hero/hero';
 import Manifesto from '@/sections/manifesto/Manifesto';
-import Vision from '@/sections/Vision/Vision';
 import OrionShowcase from '@/sections/orion-showcase/OrionShowcase';
 import IntelligenceArchitecture from '@/sections/intelligence-architecture/IntelligenceArchitecture';
 import Technology from '@/sections/technology/Technology';
@@ -28,7 +27,6 @@ export default function Page(): ReactElement {
             <main className="relative z-10">
                 <Hero />
                 <Manifesto />
-                <Vision />
                 <OrionShowcase />
                 <IntelligenceArchitecture />
                 <Technology />

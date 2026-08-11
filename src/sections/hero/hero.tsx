@@ -94,7 +94,7 @@ export default function Hero(): ReactElement {
                     >
                         <span>Founder &amp; CEO</span>
                         <span className="h-1 w-1 rounded-full bg-slate-600" />
-                        <span className="text-slate-300">SingularityHorizon Technologies Pvt. Ltd.</span>
+                        <span className="text-slate-300">Singularity Horizon Technologies Pvt. Ltd.</span>
                     </motion.div>
 
                     {/* Name Title — single-line on desktop */}
@@ -119,7 +119,7 @@ export default function Hero(): ReactElement {
                         variants={fadeUp}
                         className="mt-8 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg md:text-xl font-light"
                     >
-                        Building <span className="font-medium text-white">ORIONHELIX AI</span> — the Multiverse of Artificial Intelligence at <span className="text-slate-200">SingularityHorizon Technologies Pvt. Ltd.</span>
+                        Building <span className="font-medium text-white">ORIONHELIX AI</span> — the Multiverse of Artificial Intelligence at <span className="text-slate-200">Singularity Horizon Technologies Pvt. Ltd.</span>
                     </motion.p>
 
                     {/* Terminal Prompt */}

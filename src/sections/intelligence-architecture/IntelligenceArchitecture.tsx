@@ -32,27 +32,45 @@ export default function IntelligenceArchitecture(): ReactElement {
                     </motion.p>
                 </div>
 
-                <div className="relative mx-auto flex max-w-3xl flex-col items-center">
+                <div className="relative mx-auto flex max-w-4xl flex-col items-center pt-10">
+                    {/* Background Grid Pattern */}
+                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_20%,transparent_100%)]" />
+
                     {/* Central Vertical Flow Line */}
-                    <div className="absolute top-0 bottom-0 left-1/2 w-[1px] -translate-x-1/2 bg-gradient-to-b from-transparent via-cyan-900/50 to-transparent" />
+                    <div className="absolute top-0 bottom-0 left-1/2 w-[1px] -translate-x-1/2 bg-gradient-to-b from-transparent via-cyan-900/40 to-transparent" />
                     
+                    {/* Animated Data Packets */}
+                    <motion.div 
+                        animate={{ y: [0, 500] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                        className="absolute top-0 left-1/2 h-16 w-[1px] -translate-x-1/2 bg-gradient-to-b from-transparent via-cyan-400 to-transparent opacity-50"
+                    />
+
                     {companyKnowledge.aiPlatform.architecture.map((node, index) => (
                         <motion.div
                             key={node}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 0.6, delay: index * 0.1 }}
-                            className="relative z-10 my-6 flex w-full items-center justify-center"
+                            className="relative z-10 my-4 flex w-full items-center justify-center"
                         >
-                            <div className="group relative flex w-64 items-center justify-center rounded-sm border border-white/5 bg-black/40 px-6 py-4 backdrop-blur-md transition-colors duration-500 hover:border-cyan-500/30 hover:bg-white/[0.02]">
-                                <span className="font-mono text-sm tracking-widest text-slate-300 transition-colors duration-500 group-hover:text-cyan-400">
+                            <div className="group relative flex w-80 items-center justify-between border border-white/10 bg-black/60 px-6 py-4 shadow-[0_0_20px_rgba(0,0,0,0.5)] backdrop-blur-xl transition-all duration-500 hover:border-cyan-500/40 hover:bg-cyan-950/20">
+                                {/* Technical decorative corners */}
+                                <div className="absolute -left-[1px] -top-[1px] h-2 w-2 border-l border-t border-cyan-500/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                                <div className="absolute -bottom-[1px] -right-[1px] h-2 w-2 border-b border-r border-cyan-500/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                                
+                                <span className="font-mono text-xs text-slate-500">
+                                    {String(index + 1).padStart(2, '0')}
+                                </span>
+                                
+                                <span className="font-mono text-sm tracking-[0.2em] text-slate-200 transition-colors duration-500 group-hover:text-cyan-400">
                                     {node}
                                 </span>
                                 
-                                {/* Node Dot */}
-                                <div className="absolute -left-3 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full border border-cyan-500/30 bg-black opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                                <div className="absolute -right-3 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full border border-cyan-500/30 bg-black opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                                {/* Connection Node Dots */}
+                                <div className="absolute left-1/2 top-0 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-500/50 bg-black" />
+                                <div className="absolute bottom-0 left-1/2 h-1.5 w-1.5 -translate-x-1/2 translate-y-1/2 rounded-full border border-cyan-500/50 bg-black" />
                             </div>
                         </motion.div>
                     ))}

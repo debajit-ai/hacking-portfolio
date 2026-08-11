@@ -10,7 +10,7 @@ interface Message {
 }
 
 const SUGGESTED_QUESTIONS = [
-    "What is SingularityHorizon Technologies?",
+    "What is Singularity Horizon Technologies?",
     "What is OrionHelix AI?",
     "Who is Debajit Goswami?",
     "Are you the primary OrionHelix AI?",
@@ -21,7 +21,7 @@ export default function OrionHelixAssistant(): ReactElement {
     const [messages, setMessages] = useState<Message[]>([
         {
             role: 'assistant',
-            content: "Welcome to the OrionHelix AI Portfolio Intelligence Interface.\n\nI can help you explore SingularityHorizon Technologies Pvt. Ltd., OrionHelix AI, our technology direction, projects, and the work of Debajit Goswami, Founder & CEO.\n\nHow may I assist you?"
+            content: "Welcome to the OrionHelix AI Portfolio Intelligence Interface.\n\nI can help you explore Singularity Horizon Technologies Pvt. Ltd., OrionHelix AI, our technology direction, projects, and the work of Debajit Goswami, Founder & CEO.\n\nHow may I assist you?"
         }
     ]);
     const [input, setInput] = useState('');

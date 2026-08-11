@@ -36,7 +36,7 @@ export default function Manifesto(): ReactElement {
                         transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
                         className="max-w-4xl font-serif text-3xl font-light leading-snug text-white sm:text-4xl md:text-5xl lg:text-6xl"
                     >
-                        The future of computation is defined by <span className="font-medium italic text-cyan-50">continuous context</span> and <span className="font-medium italic text-cyan-50">agentic orchestration</span>.
+                        Engineering the infrastructure for <span className="font-medium italic text-cyan-50">continuous context</span> and <span className="font-medium italic text-cyan-50">high-dimensional perception</span>.
                     </motion.h2>
 
                     <motion.p 
