@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import Image from 'next/image';
 import { motion, useScroll, useTransform, type Variants } from 'framer-motion';
 import type { ReactElement } from 'react';
 
@@ -99,12 +100,16 @@ export default function FounderProfile(): ReactElement {
                         variants={fadeUpVariants}
                         className="relative hidden lg:flex h-96 w-96 flex-shrink-0 items-center justify-center rounded-full border border-white/5 bg-black/50"
                     >
-                        <div className="absolute inset-4 rounded-full border border-sky-900/30" />
-                        <div className="absolute inset-12 rounded-full border border-white/[0.02]" />
-                        <div className="absolute inset-0 bg-gradient-to-tr from-sky-900/10 to-transparent rounded-full" />
-                        <div className="font-mono text-[10px] tracking-[0.5em] text-slate-600 uppercase">
-                            Founder Identity
-                        </div>
+                        <Image 
+                            src="/images/debajit-goswami.jpg" 
+                            alt="Debajit Goswami" 
+                            fill
+                            sizes="384px"
+                            className="object-cover rounded-full"
+                        />
+                        <div className="absolute inset-4 rounded-full border border-sky-900/30 pointer-events-none" />
+                        <div className="absolute inset-12 rounded-full border border-white/[0.02] pointer-events-none" />
+                        <div className="absolute inset-0 bg-gradient-to-tr from-sky-900/10 to-transparent rounded-full pointer-events-none" />
                     </motion.div>
                 </motion.div>
             </motion.div>
