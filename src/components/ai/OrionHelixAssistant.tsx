@@ -26,7 +26,14 @@ export default function OrionHelixAssistant(): ReactElement {
     ]);
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    
+    // Interaction States
+    const [isHovered, setIsHovered] = useState(false);
+    const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+    const [justFinished, setJustFinished] = useState(false);
+    
     const messagesEndRef = useRef<HTMLDivElement>(null);
+    const buttonRef = useRef<HTMLButtonElement>(null);
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -35,6 +42,28 @@ export default function OrionHelixAssistant(): ReactElement {
     useEffect(() => {
         scrollToBottom();
     }, [messages, isLoading]);
+
+    // Handle completion pulse
+    useEffect(() => {
+        if (!isLoading && messages.length > 1 && messages[messages.length - 1].role === 'assistant') {
+            setJustFinished(true);
+            const t = setTimeout(() => setJustFinished(false), 2000);
+            return () => clearTimeout(t);
+        }
+    }, [isLoading, messages]);
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (!buttonRef.current) return;
+        const rect = buttonRef.current.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        setMousePos({ x, y });
+    };
+
+    const handleMouseLeave = () => {
+        setIsHovered(false);
+        setMousePos({ x: 0, y: 0 });
+    };
 
     const handleSend = async (text: string) => {
         if (!text.trim()) return;
@@ -79,10 +108,11 @@ export default function OrionHelixAssistant(): ReactElement {
             <AnimatePresence>
                 {isExpanded && (
                     <motion.div
-                        initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 20, scale: 0.95 }}
-                        transition={{ duration: 0.3 }}
+                        initial={{ opacity: 0, y: 40, scale: 0.9, filter: "blur(8px)" }}
+                        animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+                        exit={{ opacity: 0, y: 30, scale: 0.95, filter: "blur(8px)" }}
+                        transition={{ duration: 0.5, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                        style={{ transformOrigin: "bottom right" }}
                         className="mb-6 flex h-[550px] max-h-[80vh] w-[380px] max-w-[calc(100vw-3rem)] flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0a0a0a]/95 shadow-[0_0_50px_rgba(0,0,0,0.8)] backdrop-blur-2xl"
                     >
                         {/* Header */}
@@ -118,7 +148,7 @@ export default function OrionHelixAssistant(): ReactElement {
                                 <div key={idx} className={`mb-5 flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                                     <div className={`max-w-[88%] rounded-xl px-4 py-3 text-sm font-light leading-relaxed whitespace-pre-wrap ${
                                         msg.role === 'user' 
-                                            ? 'bg-gradient-to-br from-cyan-900/40 to-cyan-950/40 border border-cyan-800/30 text-white rounded-br-sm' 
+                                            ? 'bg-gradient-to-br from-cyan-900/40 to-cyan-950/40 border border-cyan-800/30 text-white rounded-br-sm shadow-inner' 
                                             : 'bg-white/[0.03] border border-white/[0.05] text-slate-300 rounded-bl-sm'
                                     }`}>
                                         {msg.content}
@@ -126,14 +156,19 @@ export default function OrionHelixAssistant(): ReactElement {
                                 </div>
                             ))}
                             
+                            {/* Cinematic Processing State */}
                             {isLoading && (
                                 <div className="mb-5 flex justify-start">
-                                    <div className="flex items-center space-x-3 rounded-xl bg-white/[0.02] border border-white/[0.05] px-4 py-3 rounded-bl-sm">
-                                        <div className="h-3.5 w-3.5 animate-spin rounded-full border-[1.5px] border-t-cyan-400 border-r-transparent border-b-cyan-400 border-l-transparent opacity-80" />
-                                        <span className="font-mono text-[10px] tracking-widest text-cyan-400/80 animate-pulse">
-                                            ORIONHELIX COMPUTING
+                                    <motion.div 
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: [0.4, 1, 0.4] }}
+                                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                                        className="px-4 py-2"
+                                    >
+                                        <span className="font-mono text-[10px] tracking-[0.25em] text-cyan-400/70 uppercase">
+                                            OrionHelix is processing...
                                         </span>
-                                    </div>
+                                    </motion.div>
                                 </div>
                             )}
                             <div ref={messagesEndRef} />
@@ -183,13 +218,104 @@ export default function OrionHelixAssistant(): ReactElement {
                 )}
             </AnimatePresence>
 
-            {/* Launcher Button */}
-            <button 
-                onClick={() => setIsExpanded(!isExpanded)}
-                className="group focus:outline-none"
-            >
-                <AICoreVisual isExpanded={isExpanded} isThinking={isLoading} />
-            </button>
+            {/* Cinematic AI Core Launcher */}
+            <div className="relative mt-2 flex items-center justify-center">
+                
+                {/* Activation Signal Waves (CORE -> SIGNAL) */}
+                <AnimatePresence>
+                    {isExpanded && [0, 1, 2].map(i => (
+                        <motion.div
+                            key={`wave-${i}`}
+                            initial={{ opacity: 0.5, scale: 1, borderWidth: "2px" }}
+                            animate={{ opacity: 0, scale: 2.5 + i * 1.5, borderWidth: "0px" }}
+                            exit={{ opacity: 0, transition: { duration: 0.2 } }}
+                            transition={{ duration: 1.2 + i * 0.2, delay: i * 0.15, ease: "easeOut" }}
+                            className="pointer-events-none absolute h-16 w-16 rounded-full border-cyan-400/50"
+                        />
+                    ))}
+                </AnimatePresence>
+
+                <motion.button
+                    ref={buttonRef}
+                    onClick={() => setIsExpanded(!isExpanded)}
+                    onMouseMove={handleMouseMove}
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={handleMouseLeave}
+                    whileTap={{ scale: 0.85 }}
+                    animate={{
+                        x: isHovered ? mousePos.x * 0.2 : 0,
+                        y: isHovered ? mousePos.y * 0.2 : 0,
+                    }}
+                    transition={{ type: "spring", stiffness: 200, damping: 20, mass: 0.5 }}
+                    className="relative flex h-16 w-16 items-center justify-center rounded-full focus:outline-none z-50 group"
+                    aria-label="Toggle OrionHelix AI Interface"
+                >
+                    {/* Ring 1 - Base Illumination */}
+                    <motion.div 
+                        className="absolute inset-0 rounded-full bg-cyan-500/10 blur-xl"
+                        animate={{
+                            scale: isLoading ? [1, 1.4, 1] : isHovered ? 1.2 : [1, 1.05, 1],
+                            opacity: isLoading ? 0.9 : isHovered ? 0.7 : 0.4
+                        }}
+                        transition={{ duration: isLoading ? 1.5 : 4, repeat: Infinity, ease: "easeInOut" }}
+                    />
+                    
+                    {/* Ring 2 - Scanning Arc (Hover & Active state) */}
+                    <motion.div 
+                        className="absolute -inset-1 rounded-full border border-transparent border-t-cyan-500/40 border-l-cyan-500/10"
+                        animate={{
+                            rotate: isLoading ? 360 : isHovered ? 180 : 360,
+                            opacity: isLoading ? 1 : isHovered || isExpanded ? 0.8 : 0.2,
+                            scale: isLoading ? [1, 1.05, 1] : 1
+                        }}
+                        transition={{ 
+                            rotate: { duration: isLoading ? 1.2 : 8, repeat: Infinity, ease: "linear" },
+                            scale: { duration: 1.2, repeat: Infinity, ease: "easeInOut" }
+                        }}
+                    />
+
+                    {/* Ring 3 - Counter/Inner Arc (Computational Motion) */}
+                    <motion.div 
+                        className="absolute -inset-2 rounded-full border border-transparent border-b-cyan-300/20 border-r-cyan-400/5"
+                        animate={{
+                            rotate: isLoading ? -360 : isHovered ? -180 : -360,
+                            opacity: isLoading ? 0.9 : isHovered || isExpanded ? 0.6 : 0.1
+                        }}
+                        transition={{ duration: isLoading ? 1.8 : 12, repeat: Infinity, ease: "linear" }}
+                    />
+
+                    {/* Tiny signal pulses during processing (Thinking State) */}
+                    <AnimatePresence>
+                        {isLoading && (
+                            <motion.div
+                                initial={{ opacity: 0.6, scale: 0.8 }}
+                                animate={{ opacity: 0, scale: 1.6 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 1, repeat: Infinity, ease: "easeOut" }}
+                                className="absolute inset-0 rounded-full border border-cyan-300/40"
+                            />
+                        )}
+                    </AnimatePresence>
+
+                    {/* Completion Confirmation Pulse */}
+                    <AnimatePresence>
+                        {justFinished && (
+                            <motion.div
+                                initial={{ opacity: 0.9, scale: 0.8, borderWidth: "2px" }}
+                                animate={{ opacity: 0, scale: 2.0, borderWidth: "0px" }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 1.5, ease: "easeOut" }}
+                                className="absolute inset-0 rounded-full border-cyan-300"
+                            />
+                        )}
+                    </AnimatePresence>
+                    
+                    {/* The internal AI Core visual structure */}
+                    <div className="relative z-10 flex h-full w-full items-center justify-center transition-transform duration-700 ease-out group-hover:scale-105">
+                        <AICoreVisual isExpanded={isExpanded} isThinking={isLoading} />
+                    </div>
+                </motion.button>
+            </div>
         </div>
     );
 }

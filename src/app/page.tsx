@@ -5,13 +5,18 @@ import EngineCanvas from '@/canvas/EngineCanvas';
 import Navbar from '@/components/navigation/Navbar';
 
 import Hero from '@/sections/hero/hero';
+import Ecosystem from '@/sections/ecosystem/Ecosystem';
 import Manifesto from '@/sections/manifesto/Manifesto';
+import FounderPhilosophy from '@/sections/founder-philosophy/FounderPhilosophy';
 import OrionShowcase from '@/sections/orion-showcase/OrionShowcase';
+import EngineeringStack from '@/sections/engineering-stack/EngineeringStack';
 import IntelligenceArchitecture from '@/sections/intelligence-architecture/IntelligenceArchitecture';
 import Technology from '@/sections/technology/Technology';
 import Projects from '@/sections/projects/Projects';
+import ResearchLab from '@/sections/research-lab/ResearchLab';
 import CompanyPrinciples from '@/sections/principles/CompanyPrinciples';
 import Journey from '@/sections/journey/Journey';
+import FounderProfile from '@/sections/founder-profile/FounderProfile';
 import Roadmap from '@/sections/roadmap/Roadmap';
 import Contact from '@/sections/contact/Contact';
 
@@ -26,13 +31,18 @@ export default function Page(): ReactElement {
 
             <main className="relative z-10">
                 <Hero />
+                <Ecosystem />
                 <Manifesto />
+                <FounderPhilosophy />
                 <OrionShowcase />
+                <EngineeringStack />
                 <IntelligenceArchitecture />
                 <Technology />
                 <Projects />
+                <ResearchLab />
                 <CompanyPrinciples />
                 <Journey />
+                <FounderProfile />
                 <Roadmap />
                 <Contact />
             </main>
