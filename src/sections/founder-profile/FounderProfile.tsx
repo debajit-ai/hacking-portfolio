@@ -98,7 +98,7 @@ export default function FounderProfile(): ReactElement {
                     {/* Cinematic Visual Element */}
                     <motion.div 
                         variants={fadeUpVariants}
-                        className="relative hidden lg:flex h-96 w-96 flex-shrink-0 items-center justify-center rounded-full border border-white/5 bg-black/50"
+                        className="relative flex h-64 w-64 sm:h-72 sm:w-72 lg:h-96 lg:w-96 self-center lg:self-auto flex-shrink-0 items-center justify-center rounded-full border border-white/5 bg-black/50"
                     >
                         <Image 
                             src="/images/debajit-goswami.jpg" 
